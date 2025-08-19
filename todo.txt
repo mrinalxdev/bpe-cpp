@@ -1,0 +1,13 @@
+Implementing BPE in pure C++, what I need to know
+
+Things which are needed to be done here 
+
+- Dictionary of symbol→id (just std::unordered_map<std::string, uint32_t>).
+- Reverse map id→symbol (std::vector<std::string>).
+- A priority queue or flat map that keeps the current best merge pair -> frequency.
+
+Kind of a workflow which it will follow
+
+- read the training text
+- convert to UTF-8 bytes
+- split on whitespace to get “words” (each is a sequence of bytes).
