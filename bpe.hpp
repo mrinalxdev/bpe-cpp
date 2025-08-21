@@ -29,6 +29,13 @@ struct MergeRuleHash {
   }
 };
 
+struct PairHash {
+  size_t operator()(const std::pair<SymbolID, SymbolID>& p) const {
+    return std::hash<SymbolID>()(p.first) ^ (std::hash<SymbolID>()(p.second) << 1);
+  }
+};
+
+
 // {comment} tokenizer class where the main function of training is to be
 // written mostly handled by the vector, the training and the encoding part
 // still figuring out the decoding part but for sure will get there too
@@ -66,12 +73,3 @@ private:
   friend class BPEEncoder;
   friend class BPEDecoder;
 };
-
-
-struct PairHash {
-  size_t operator()(const std::pair<SymbolID, SymbolID>& p) const {
-    return std::hash<SymbolID>()(p.first) ^ (std::hash<SymbolID>()(p.second) << 1);
-  }
-};
-
-

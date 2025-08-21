@@ -1,4 +1,3 @@
-// utils.hpp
 #pragma once
 
 #include <vector>
@@ -10,7 +9,6 @@
 #include <cctype>
 #include <cstdint>
 
-// Read entire file into string
 inline std::string read_file(const std::string& filename) {
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
@@ -21,7 +19,6 @@ inline std::string read_file(const std::string& filename) {
     return content;
 }
 
-// Write string to file
 inline void write_file(const std::string& filename, const std::string& content) {
     std::ofstream file(filename, std::ios::binary);
     if (!file) {
@@ -30,7 +27,6 @@ inline void write_file(const std::string& filename, const std::string& content) 
     file << content;
 }
 
-// Split string by whitespace
 inline std::vector<std::string> split_on_whitespace(const std::string& text) {
     std::vector<std::string> words;
     std::istringstream iss(text);
@@ -41,17 +37,14 @@ inline std::vector<std::string> split_on_whitespace(const std::string& text) {
     return words;
 }
 
-// Convert byte to string (e.g., for single-byte symbols)
 inline std::string byte_to_string(uint8_t byte) {
     return std::string(1, static_cast<char>(byte));
 }
 
-// Is valid UTF-8 continuation byte?
 inline bool is_utf8_continuation(uint8_t c) {
     return (c & 0xC0) == 0x80;
 }
 
-// Validate UTF-8 (basic check)
 inline bool is_valid_utf8(const std::string& str) {
     const uint8_t* bytes = reinterpret_cast<const uint8_t*>(str.data());
     size_t i = 0;
