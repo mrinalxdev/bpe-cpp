@@ -47,7 +47,7 @@ struct PairHash {
 class BPETokenizer {
 public:
   BPETokenizer();
-  explicit BPETokenizer(const std::string &vocab_file);
+  // explicit BPETokenizer(const std::string &vocab_file);
 
   void train(const std::string &text, size_t vocab_size);
 
